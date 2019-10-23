@@ -37,11 +37,17 @@ public class Program {
 		sellerDao.insert(newseller);
 		System.out.println("Inserted! New id = " + newseller.getId());
 		
+		
 		System.out.println("\n=== TEST 5: seller update =====");
-		seller = sellerDao.findById(1);
-		seller.setName("Martha Wayne");
-		seller.setEmail("martha.wayne@gmail.com.br");
+		seller = sellerDao.findById(10);
+		seller.setId(8);
 		sellerDao.update(seller);
 		System.out.println("Updated Completed!");
+		
+		
+		System.out.println("\n=== TEST 6: seller deleteById =====");
+		sellerDao.deleteById(10);
+		System.out.println("Deleted!");
+
 	}
 }
