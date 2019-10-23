@@ -15,11 +15,11 @@ public class Program {
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 
 		System.out.println("=== TEST 1: seller findById =====");
-		Seller seller = sellerDao.findById(3);
+		Seller seller = sellerDao.findById(2);
 		System.out.println(seller);
 
 		System.out.println("\n=== TEST 2: seller findByDepartment =====");
-		Department department = new Department(2, null);
+		Department department = new Department(3, null);
 		List<Seller> list = sellerDao.findByDepartment(department);
 		for (Seller obj : list) {
 			System.out.println(obj);
@@ -32,9 +32,16 @@ public class Program {
 			System.out.println(obj);
 		}
 		
-		System.out.println("\n=== TEST 4: seller insert=====");
+		System.out.println("\n=== TEST 4: seller insert =====");
 		Seller newseller = new Seller(null, "Greg", "greg@gmail.com", new Date(), 4000.0, department);
 		sellerDao.insert(newseller);
 		System.out.println("Inserted! New id = " + newseller.getId());
+		
+		System.out.println("\n=== TEST 5: seller update =====");
+		seller = sellerDao.findById(1);
+		seller.setName("Martha Wayne");
+		seller.setEmail("martha.wayne@gmail.com.br");
+		sellerDao.update(seller);
+		System.out.println("Updated Completed!");
 	}
 }
